@@ -5,7 +5,6 @@ push = require 'push'
 Class = require 'class'
 
 require 'Paddle'
-
 require 'Ball'
 
 WINDOW_WIDTH = 1280
@@ -18,11 +17,8 @@ PADDLE_SPEED = 200
 
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
-
     love.window.setTitle('Pong')
-
     math.randomseed(os.time())
-
     smallFont = love.graphics.newFont('font.ttf', 8)
     largeFont = love.graphics.newFont('font.ttf', 16)
     scoreFont = love.graphics.newFont('font.ttf', 32)
@@ -47,11 +43,8 @@ function love.load()
 
     player1Score = 0
     player2Score = 0
-
     servingPlayer = 1
-
     winningPlayer = 0
-
     gameState = 'start'
 end
 
