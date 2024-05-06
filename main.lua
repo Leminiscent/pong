@@ -16,8 +16,6 @@ VIRTUAL_HEIGHT = 243
 
 PADDLE_SPEED = 200
 
-local gameMode = 'multiplayer'
-
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
 
