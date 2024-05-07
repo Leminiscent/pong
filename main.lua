@@ -92,8 +92,8 @@ function love.update(dt)
             sounds['score']:play()
 
             -- Reset paddles to default positions
-            player1:reset(VIRTUAL_WIDTH / 2 - 2, VIRTUAL_HEIGHT / 2 - 2)
-            player2:reset(VIRTUAL_WIDTH / 2 - 2, VIRTUAL_HEIGHT / 2 - 2)
+            player1:reset(30)
+            player2:reset(VIRTUAL_HEIGHT - 30)
 
             gameState = player1Score == 10 or player2Score == 10 and 'done' or 'serve'
             if gameState == 'done' then
