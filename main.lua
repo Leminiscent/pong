@@ -102,7 +102,7 @@ function love.update(dt)
     -- Paddle movement
     player1.dy = love.keyboard.isDown('w') and -PADDLE_SPEED or love.keyboard.isDown('s') and PADDLE_SPEED or 0
 
-    if gameMode == 'singleplayer' then
+    if gameMode == 'Singleplayer' then
         local targetY = ball.y - (player2.height / 2)                -- Target is center of the ball
         local distance = targetY - player2.y
         local moveSpeed = math.min(math.abs(distance), PADDLE_SPEED) -- Limit maximum speed
