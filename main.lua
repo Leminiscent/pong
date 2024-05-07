@@ -101,7 +101,12 @@ function love.update(dt)
 
     -- Paddle movement
     player1.dy = love.keyboard.isDown('w') and -PADDLE_SPEED or love.keyboard.isDown('s') and PADDLE_SPEED or 0
-    player2.dy = love.keyboard.isDown('up') and -PADDLE_SPEED or love.keyboard.isDown('down') and PADDLE_SPEED or 0
+
+    if gameMode == 'singleplayer' then
+        player2.dy = ball.y < player2.y and -PADDLE_SPEED or ball.y > player2.y and PADDLE_SPEED or 0
+    else
+        player2.dy = love.keyboard.isDown('up') and -PADDLE_SPEED or love.keyboard.isDown('down') and PADDLE_SPEED or 0
+    end
 
     -- Update objects if playing
     if gameState == 'play' then
