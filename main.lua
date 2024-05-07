@@ -14,7 +14,7 @@ VIRTUAL_HEIGHT = 243
 
 -- Game settings
 PADDLE_SPEED = 200
-gameMode = 'singleplayer'
+gameMode = 'Singleplayer'
 
 -- Initialization function
 function love.load()
@@ -102,7 +102,7 @@ function love.update(dt)
     -- Paddle movement
     player1.dy = love.keyboard.isDown('w') and -PADDLE_SPEED or love.keyboard.isDown('s') and PADDLE_SPEED or 0
 
-    if gameMode == 'singleplayer' then
+    if gameMode == 'Singleplayer' then
         player2.dy = ball.y < player2.y and -PADDLE_SPEED or ball.y > player2.y and PADDLE_SPEED or 0
     else
         player2.dy = love.keyboard.isDown('up') and -PADDLE_SPEED or love.keyboard.isDown('down') and PADDLE_SPEED or 0
@@ -134,7 +134,7 @@ function love.keypressed(key)
         end
     elseif key == 'm' then
         if gameState == 'start' then
-            gameMode = gameMode == 'singleplayer' and 'multiplayer' or 'singleplayer'
+            gameMode = gameMode == 'Singleplayer' and 'Multiplayer' or 'Singleplayer'
         end
     end
 end
