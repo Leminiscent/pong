@@ -14,6 +14,7 @@ VIRTUAL_HEIGHT = 243
 
 -- Game settings
 PADDLE_SPEED = 200
+gameMode = 'singleplayer'
 
 -- Initialization function
 function love.load()
@@ -125,6 +126,12 @@ function love.keypressed(key)
             player1Score = 0
             player2Score = 0
             servingPlayer = winningPlayer == 1 and 2 or 1
+        end
+    elseif key == 'm' then
+        if gameMode == 'singleplayer' then
+            gameMode = 'multiplayer'
+        else
+            gameMode = 'singleplayer'
         end
     end
 end
