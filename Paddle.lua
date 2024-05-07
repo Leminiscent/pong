@@ -27,6 +27,7 @@ function Paddle:render()
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height)
 end
 
+-- Function to reset the paddle to the passed Y coordinate
 function Paddle:reset(y)
     self.y = y
 end
