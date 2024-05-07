@@ -133,10 +133,8 @@ function love.keypressed(key)
             servingPlayer = winningPlayer == 1 and 2 or 1
         end
     elseif key == 'm' then
-        if gameMode == 'singleplayer' then
-            gameMode = 'multiplayer'
-        else
-            gameMode = 'singleplayer'
+        if gameState == 'start' then
+            gameMode = gameMode == 'singleplayer' and 'multiplayer' or 'singleplayer'
         end
     end
 end
