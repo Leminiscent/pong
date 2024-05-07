@@ -103,11 +103,12 @@ function love.update(dt)
     player1.dy = love.keyboard.isDown('w') and -PADDLE_SPEED or love.keyboard.isDown('s') and PADDLE_SPEED or 0
 
     if gameMode == 'Singleplayer' then
-        local targetY = ball.y - (player2.height / 2)                -- Target is center of the ball
+        local targetY = ball.y - (player2.height / 2)                           -- Target is center of the ball
         local distance = targetY - player2.y
-        local moveSpeed = math.min(math.abs(distance), PADDLE_SPEED) -- Limit maximum speed
+        local speedFactor = math.max(0.4, math.min(1, math.abs(distance) / 50)) -- Dynamic speed factor
+        local moveSpeed = PADDLE_SPEED * speedFactor                            -- Apply dynamic factor
 
-        if math.abs(distance) > 5 then                               -- Threshold to avoid tiny oscillations
+        if math.abs(distance) > 10 then                                         -- Threshold to prevent tiny, unnecessary movements
             player2.dy = distance > 0 and moveSpeed or -moveSpeed
         else
             player2.dy = 0 -- Stop moving if close enough
