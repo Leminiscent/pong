@@ -108,7 +108,7 @@ function love.update(dt)
         local speedFactor = math.max(0.4, math.min(1, math.abs(distance) / 50)) -- Dynamic speed factor
         local moveSpeed = PADDLE_SPEED * speedFactor                            -- Apply dynamic factor
 
-        if math.abs(distance) > 10 then                                         -- Threshold to prevent tiny, unnecessary movements
+        if math.abs(distance) > 5 then                                         -- Threshold to prevent tiny, unnecessary movements
             player2.dy = distance > 0 and moveSpeed or -moveSpeed
         else
             player2.dy = 0 -- Stop moving if close enough
