@@ -102,8 +102,16 @@ function love.update(dt)
     -- Paddle movement
     player1.dy = love.keyboard.isDown('w') and -PADDLE_SPEED or love.keyboard.isDown('s') and PADDLE_SPEED or 0
 
-    if gameMode == 'Singleplayer' then
-        player2.dy = ball.y < player2.y and -PADDLE_SPEED or ball.y > player2.y and PADDLE_SPEED or 0
+    if gameMode == 'singleplayer' then
+        local targetY = ball.y - (player2.height / 2)                -- Target is center of the ball
+        local distance = targetY - player2.y
+        local moveSpeed = math.min(math.abs(distance), PADDLE_SPEED) -- Limit maximum speed
+
+        if math.abs(distance) > 5 then                               -- Threshold to avoid tiny oscillations
+            player2.dy = distance > 0 and moveSpeed or -moveSpeed
+        else
+            player2.dy = 0 -- Stop moving if close enough
+        end
     else
         player2.dy = love.keyboard.isDown('up') and -PADDLE_SPEED or love.keyboard.isDown('down') and PADDLE_SPEED or 0
     end
