@@ -26,3 +26,7 @@ function Paddle:render()
     -- Draw a rectangle representing the paddle
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height)
 end
+
+function Paddle:reset(y)
+    self.y = y
+end
