@@ -100,27 +100,28 @@ function love.update(dt)
     end
 
     -- Paddle movement
-    player1.dy = love.keyboard.isDown('w') and -PADDLE_SPEED or love.keyboard.isDown('s') and PADDLE_SPEED or 0
-
-    if gameMode == 'Singleplayer' then
-        local targetY = ball.y - (player2.height / 2)                           -- Target is center of the ball
-        local distance = targetY - player2.y
-        local speedFactor = math.max(0.75, math.min(1, math.abs(distance) / 10)) -- Dynamic speed factor
-        local moveSpeed = PADDLE_SPEED * speedFactor                            -- Apply dynamic factor
-
-        if math.abs(distance) > 6 then                                         -- Threshold to prevent tiny, unnecessary movements
-            player2.dy = distance > 0 and moveSpeed or -moveSpeed
-        else
-            player2.dy = 0 -- Stop moving if close enough
-        end
-    else
-        player2.dy = love.keyboard.isDown('up') and -PADDLE_SPEED or love.keyboard.isDown('down') and PADDLE_SPEED or 0
-    end
-
-    -- Update objects if playing
     if gameState == 'play' then
+        player1.dy = love.keyboard.isDown('w') and -PADDLE_SPEED or love.keyboard.isDown('s') and PADDLE_SPEED or 0
+
+        if gameMode == 'Singleplayer' then
+            local targetY = ball.y - (player2.height / 2)                            -- Target is center of the ball
+            local distance = targetY - player2.y
+            local speedFactor = math.max(0.75, math.min(1, math.abs(distance) / 10)) -- Dynamic speed factor
+            local moveSpeed = PADDLE_SPEED * speedFactor                             -- Apply dynamic factor
+
+            if math.abs(distance) > 6 then                                           -- Threshold to prevent tiny, unnecessary movements
+                player2.dy = distance > 0 and moveSpeed or -moveSpeed
+            else
+                player2.dy = 0 -- Stop moving if close enough
+            end
+        else
+            player2.dy = love.keyboard.isDown('up') and -PADDLE_SPEED or love.keyboard.isDown('down') and PADDLE_SPEED or
+            0
+        end
+        
         ball:update(dt)
     end
+
     player1:update(dt)
     player2:update(dt)
 end
