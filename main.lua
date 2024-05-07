@@ -149,6 +149,16 @@ function love.keypressed(key)
         if gameState == 'start' then
             gameMode = gameMode == 'Singleplayer' and 'Multiplayer' or 'Singleplayer'
         end
+    elseif key == 'r' then
+        gameState = 'start'
+        gameMode = 'Singleplayer'
+        player1Score = 0
+        player2Score = 0
+        servingPlayer = 1
+        winningPlayer = 0
+        player1:reset(30)
+        player2:reset(VIRTUAL_HEIGHT - 30)
+        ball:reset()
     end
 end
 
