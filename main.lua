@@ -115,10 +115,9 @@ function love.update(dt)
                 player2.dy = 0 -- Stop moving if close enough
             end
         else
-            player2.dy = love.keyboard.isDown('up') and -PADDLE_SPEED or love.keyboard.isDown('down') and PADDLE_SPEED or
-            0
+            player2.dy = love.keyboard.isDown('up') and -PADDLE_SPEED or love.keyboard.isDown('down') and PADDLE_SPEED or 0
         end
-        
+
         ball:update(dt)
     end
 
