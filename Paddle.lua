@@ -30,4 +30,5 @@ end
 -- Function to reset the paddle to the passed Y coordinate
 function Paddle:reset(y)
     self.y = y
+    self.dy = 0
 end
