@@ -90,6 +90,11 @@ function love.update(dt)
                 player1Score = player1Score + 1
             end
             sounds['score']:play()
+
+            -- Reset paddles to default positions
+            player1:reset(VIRTUAL_WIDTH / 2 - 2, VIRTUAL_HEIGHT / 2 - 2)
+            player2:reset(VIRTUAL_WIDTH / 2 - 2, VIRTUAL_HEIGHT / 2 - 2)
+
             gameState = player1Score == 10 or player2Score == 10 and 'done' or 'serve'
             if gameState == 'done' then
                 winningPlayer = player1Score == 10 and 1 or 2
@@ -115,7 +120,8 @@ function love.update(dt)
                 player2.dy = 0 -- Stop moving if close enough
             end
         else
-            player2.dy = love.keyboard.isDown('up') and -PADDLE_SPEED or love.keyboard.isDown('down') and PADDLE_SPEED or 0
+            player2.dy = love.keyboard.isDown('up') and -PADDLE_SPEED or love.keyboard.isDown('down') and PADDLE_SPEED or
+            0
         end
 
         ball:update(dt)
