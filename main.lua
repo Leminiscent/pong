@@ -151,7 +151,6 @@ function love.keypressed(key)
         end
     elseif key == 'r' then
         gameState = 'start'
-        gameMode = 'Singleplayer'
         player1Score = 0
         player2Score = 0
         servingPlayer = 1
