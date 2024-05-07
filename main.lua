@@ -105,7 +105,7 @@ function love.update(dt)
     if gameMode == 'Singleplayer' then
         local targetY = ball.y - (player2.height / 2)                           -- Target is center of the ball
         local distance = targetY - player2.y
-        local speedFactor = math.max(0.9, math.min(1, math.abs(distance) / 50)) -- Dynamic speed factor
+        local speedFactor = math.max(0.4, math.min(1, math.abs(distance) / 50)) -- Dynamic speed factor
         local moveSpeed = PADDLE_SPEED * speedFactor                            -- Apply dynamic factor
 
         if math.abs(distance) > 10 then                                         -- Threshold to prevent tiny, unnecessary movements
